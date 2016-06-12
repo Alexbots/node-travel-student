@@ -1,14 +1,24 @@
 var appHelper = require("./apphelper.js");
 
 appHelper.runApp(function(app, db) {
-	
+
 
 	console.log("Travel application is running!");
 
-	var myName = "YOUR_NAME_HERE";
+	var myName = "Alex";
 	app.get("/", function (req, resp) {
-		resp.write("<html><body><h1>Welcome to "+myName+"'s first web app!</body></html>");
-		resp.end();
+    resp.render('index');
+	});
+	app.get("/icecream/:flavour", function (req, resp) {
+    resp.render('icecream', {
+      flavour: req.params.flavour
+    });
 	});
 
+  app.get('/blog',function(req,resp) {
+    db.findArray({},function(results) {
+      console.log(results);
+      resp.render('blog', { results:results })
+    });
+  })
 })

@@ -5,3 +5,8 @@ body {
 a {
   color: #00b7ff;
 }
+h2{color:#20FF78;
+}
+p.description{
+  font-style: italic;
+}
